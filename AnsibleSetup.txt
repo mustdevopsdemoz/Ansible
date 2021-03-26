@@ -26,9 +26,6 @@ sudo su - ansadmin
 ssh-keygen
 Copy keys onto all ansible managed hosts (on Control node)
 
-ssh-copy-id ansadmin@<target-server>
-Ansible server used to create images and store on docker registry. Hence install docker, start docker services and add ansadmin to the docker group.
-
 yum install docker
 
 # start docker services 
@@ -46,6 +43,8 @@ vi /etc/ssh/sshd_config
 #save the file
 
 service sshd reload
+ssh-copy-id ansadmin@<target-server>
+Ansible server used to create images and store on docker registry. Hence install docker, start docker services and add ansadmin to the docker group
 
 Validation test
 Run ansible command as ansadmin user it should be successful (Master)
