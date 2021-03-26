@@ -1,0 +1,34 @@
+1. go to jenkins console
+2. manage jenkins->configure system->
+3. "publish over ssh" section
+-> Add SSH server->ansibleserver
+host name->ansible server internal ip
+username->ansadmin
+advanced->use password authentication->password , provide ansible admin user password
+**ensure you have enabeled password authentication on ansible server**
+test the connection it should be done
+4. create a maven job
+SCM->git
+repo->same url
+build->pom.xml, goals->clean install package
+post buld actions->"send build over ssh"->ansibleserver
+transfers->
+source files->webapp/target/*.war
+remove prefix->webapp/target
+[ go to ansible system (ansibleadmin login on ansibleserver host, in home of the user), 
+cd /opt
+sudo mkdir docker
+sudo chown -R ansadmin:ansadmin /opt/docker
+]
+** back to jenkins job configuration
+transfers->remote directory->//opt//docker
+nothing in the exec section
+
+build the job, it should copy war file in the docker folder
+
+
+
+
+
+
+
