@@ -32,7 +32,7 @@ Ansible server used to create images and store on docker registry. Hence install
 yum install docker
 
 # start docker services 
-service docker start
+service docker status
 service docker start 
 
 # add user to docker group 
