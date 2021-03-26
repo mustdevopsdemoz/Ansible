@@ -39,6 +39,14 @@ service docker start
 usermod -aG docker ansadmin
 Create a directory /etc/ansible and create an inventory file called "hosts" add control node and managed hosts IP addresses to it.
 
+#
+vi /etc/ssh/sshd_config
+##edit the file search the line and change as below
+#PasswordAuthentication yes
+#save the file
+
+service sshd reload
+
 Validation test
 Run ansible command as ansadmin user it should be successful (Master)
 ansible all -m ping
